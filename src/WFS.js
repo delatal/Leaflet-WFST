@@ -72,7 +72,8 @@ L.WFS = L.FeatureGroup.extend({
   describeFeatureType: function (successCallback, errorCallback) {
     var requestData = L.XmlUtil.createElementNS('wfs:DescribeFeatureType', {
       service: 'WFS',
-      version: this.options.version
+      version: this.options.version,
+      outputFormat: this.readFormat.outputFormat
     });
     requestData.appendChild(L.XmlUtil.createElementNS('TypeName', {}, {
       value: this.options.typeNSName
