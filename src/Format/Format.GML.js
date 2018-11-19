@@ -54,6 +54,9 @@ L.Format.GML = L.Format.Base.extend({
   generateLayer: function (feature) {
     var geometryField = feature.getElementsByTagNameNS(this.namespaceUri, this.options.geometryField)[0];
     if (!geometryField) {
+      geometryField = feature.getElementsByTagNameNS(L.XmlUtil.namespaces.gml, this.options.geometryField)[0];
+    }
+    if (!geometryField) {
       throw new Error(
         'Geometry field \'' +
         this.options.geometryField +
